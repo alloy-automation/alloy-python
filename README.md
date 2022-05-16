@@ -9,7 +9,7 @@ pip install alloy
 
 
 ## Usage
-
+```
 from alloy import run_alloy
 run_alloy(
    apiKey=API_KEY,
@@ -17,7 +17,7 @@ run_alloy(
    data = {parameterName: 'Parameter Value'},
    returnExecutionData = False
 )
-
+```
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/alloy-automation/alloy-python.
