@@ -1,7 +1,25 @@
-A sample python package deployment utility for SQLShack Demo.
+# PythonSdk
+This is a basic wrapper package for sending events to the [Alloy](https://runalloy.com/) API. It exposes a single class module, that you can use across your Python controllers.
 
-python setup.py bdist_wheel
-python3 -m pip install -e .
-python3
+## Installation
+
+Install the PyPI and add to the application:
+
+pip install alloy
+
+
+## Usage
+
 from alloy import run_alloy
-run_alloy("7a887212-692c-4c23-9d38-1f3120a6d043","61d564788d24240013f5e727")
+run_alloy(
+   apiKey=API_KEY,
+   workflowId =workflowID,
+   data = {parameterName: 'Parameter Value'},
+   returnExecutionData = False
+)
+
+
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/alloy-automation/alloy-python.
+
+pip install calculato
