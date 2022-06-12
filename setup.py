@@ -8,6 +8,7 @@ setuptools.setup(
     version="0.0.1",
     description="Run Alloy workflows from a python server",
     long_description=long_description,
+    long_description_content_type='text/markdown',
     py_modules=["alloy-python"],
     package_dir={'':'src'}
 )
