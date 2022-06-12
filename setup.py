@@ -7,6 +7,7 @@ setuptools.setup(
     name="alloy-python",
     version="0.0.1",
     description="Run Alloy workflows from a python server",
+    long_description=long_description,
     py_modules=["alloy-python"],
     package_dir={'':'src'}
 )
