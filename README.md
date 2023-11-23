@@ -47,7 +47,7 @@ Replace `"your_api_key_here"` with your actual API key. The `Embedded` class pro
 
 ### API Key Configuration
 
-Before using the SDK, set your API key in the `constants.py` file:
+Before running the test directory scripts, set your API key in the `constants.py` file:
 
 ```python
 # constants.py
@@ -57,14 +57,17 @@ API_KEY = "your_api_key_here"
 # Other constants...
 ```
 
-Replace `"your_api_key_here"` with your actual API key.
-
 ### Python Path
 
 For running test scripts, ensure to set the `PYTHONPATH` environment variable and configure the API key in `constants.py`.
 
 ```
 export PYTHONPATH="/Users/kellygold/code/alloy_python:$PYTHONPATH"
+```
+
+Run the script 
+```
+python3 test/credentials/list_credentials.py
 ```
 
 ## Contributing
