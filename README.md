@@ -43,8 +43,9 @@ print(response)
 
 Replace `"your_api_key_here"` with your actual API key. The `Embedded` class provides access to all the features of the Alloy Python SDK.
 
-### Testing
-## API Key Configuration
+## Testing
+
+### API Key Configuration
 
 Before using the SDK, set your API key in the `constants.py` file:
 
@@ -57,16 +58,6 @@ API_KEY = "your_api_key_here"
 ```
 
 Replace `"your_api_key_here"` with your actual API key.### API Key Configuration
-
-Before using the SDK, set your API key in the `constants.py` file:
-
-```python
-# constants.py
-
-BASE_URL = "https://embedded.runalloy.com/2023-12"
-API_KEY = "your_api_key_here"
-# Other constants...
-```
 
 For running test scripts, ensure to set the `PYTHONPATH` environment variable and configure the API key in `constants.py`.
 
