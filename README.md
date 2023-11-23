@@ -57,7 +57,9 @@ API_KEY = "your_api_key_here"
 # Other constants...
 ```
 
-Replace `"your_api_key_here"` with your actual API key.### API Key Configuration
+Replace `"your_api_key_here"` with your actual API key.
+
+###Python Path
 
 For running test scripts, ensure to set the `PYTHONPATH` environment variable and configure the API key in `constants.py`.
 
