@@ -1,3 +1,5 @@
 test.py
 venv
 alloy_python.egg-info
+build
+dist
