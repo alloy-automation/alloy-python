@@ -1,0 +1,9 @@
+# constants.py
+
+BASE_URL = "https://embedded.runalloy.com/2023-12"
+CONNECTION_ID = ""
+API_KEY = ""
+SHOPIFY_CONNECTION_ID = ""
+SALESFORCE_CONNECTION_ID = ""
+ZOHO_CRM_CONNECTION_ID = ""
+QUICKBOOKS_CONNECTION_ID = ""

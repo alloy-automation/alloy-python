@@ -1,15 +1,15 @@
-import setuptools
-import os
+# setup.py
+from setuptools import setup, find_packages
 
-DIRECTORY = os.path.dirname(__file__)
-READ_ME = open(os.path.join(DIRECTORY, "README.rst")).read()
-
-setuptools.setup(
-    name="alloy-python",
-    version="0.0.1",
-    description="Run Alloy workflows from a python server",
-    long_description=READ_ME,
-    long_description_content_type="text/x-rst",
-    py_modules=["alloy-python"],
-    package_dir={'':'src'}
+setup(
+    name='alloy_python',
+    version='0.1.0',
+    author='Your Name',
+    author_email='kelly@runalloy.com',
+    description='A lightweight Python wrapper for the Alloy API',
+    packages=find_packages(),
+    install_requires=[
+        'requests',  # and any other dependencies
+    ],
+    # Include additional metadata as needed
 )
