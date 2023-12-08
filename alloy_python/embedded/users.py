@@ -1,14 +1,14 @@
 import requests
-from ..constants import BASE_URL, API_KEY
+from ..constants import BASE_URL
 
 class User:
-    def __init__(self, api_key=API_KEY):
+    def __init__(self, api_key):
+        if not api_key:
+            raise ValueError("API key must be provided")
         self.api_key = api_key
         self.headers = {'Authorization': f'Bearer {api_key}'}
         self.url = BASE_URL
-        self.username = None
         self.user_id = None
-        self.connection_id = None
 
     def set_user_id(self, user_id):
         self.user_id = user_id
