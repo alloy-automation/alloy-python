@@ -1,73 +1,62 @@
+
 # Alloy Python SDK
 
-This SDK provides a Python interface for interacting with Alloy APIs. It's designed for flexibility and easy integration into Python projects. This package will be distributed via PyPI and will be available via `pip install alloy-xxx`.
+This SDK provides a Python interface for interacting with Alloy APIs. It's designed for flexibility and easy integration into Python projects and is distributed via PyPI.
 
 ## Installation
 
-### Clone the repository
-
-Clone the repository to your local machine:
+The Alloy Python SDK can be easily installed using pip:
 
 ```bash
-git clone https://github.com/yourusername/alloy_python.git
-```
-
-### Install dependencies and the package
-
-Install the required dependencies and the SDK itself:
-
-```bash
-pip install -r requirements.txt
-pip install .
+pip install alloy-python-sdk
 ```
 
 ## Usage
 
-After installation, you can import and use the SDK in your Python projects:
+After installation, you can use the SDK in your Python projects by importing the `Embedded` class and initializing it with your API key. Here's an example:
 
 ```python
-from alloy_python import Embedded
+from alloy_python.embedded import Embedded
 
 # Initialize with your API key
-embedded = Embedded("your_api_key_here")
+embedded = Embedded("your_alloy_api_key")
 
 # Example usage with the App class
 response = embedded.App.get_apps()
 print(response)
 
-# Example usage with other classes
+# You can also access other services in a similar manner
 # response = embedded.User.get_user()
 # response = embedded.Workflows.list()
 # ... and so on
 ```
 
-Replace `"your_api_key_here"` with your actual API key. The `Embedded` class provides access to all the features of the Alloy Python SDK.
+Replace `"your_alloy_api_key"` with your actual Alloy API key. The `Embedded` class provides access to various services like Apps, Users, Workflows, etc.
 
 ## Testing
 
-### API Key Configuration
+### API Key for Testing
 
-Before running the test directory scripts, set your API key in the `constants.py` file:
+To test the SDK, you'll need to set the `ALLOY_API_KEY` environment variable. This can be done in your terminal session:
 
-```python
-# constants.py
-
-BASE_URL = "https://embedded.runalloy.com/2023-12"
-API_KEY = "your_api_key_here"
-# Other constants...
+```bash
+export ALLOY_API_KEY="your_api_key_here"
 ```
 
-### Python Path
+### Running Test Scripts
 
-For running test scripts, ensure to set the `PYTHONPATH` environment variable and configure the API key in `constants.py`.
+The SDK includes a set of test scripts that you can use to verify its functionality. Before running these scripts, ensure that the `ALLOY_API_KEY` environment variable is set as described above. You may need to replace user IDs, workflow IDs, integration IDs, etc., in the test scripts with those specific to your Alloy account.
 
-```
-export PYTHONPATH="/Users/kellygold/code/alloy_python:$PYTHONPATH"
+Run a test script using:
+
+```bash
+python3 test/path_to_test_script.py
 ```
 
-Run the script 
-```
-python3 test/credentials/list_credentials.py
+For example:
+
+```bash
+python3 test/apps/get_apps.py
 ```
 
 ## Contributing
@@ -76,4 +65,4 @@ Contributions to the SDK are welcome. Please ensure to follow the coding standar
 
 ## License
 
-Specify the license under which your SDK is distributed.
+Specify the license under which your SDK is distributed. This can be MIT, Apache, GPL, or any other open-source license you choose.

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='alloy_python_sdk',
-    version='0.1.0',
+    version='0.3.0',
     author='Kelly Gold',
     author_email='kelly@runalloy.com',
     description='A lightweight Python wrapper for the Alloy API',
