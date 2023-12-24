@@ -4,6 +4,9 @@ from .crm import CRM
 
 class UAPI:
     def __init__(self, api_key):
+        if not api_key:
+            raise ValueError("API key must be provided")
+        
         self.api_key = api_key
 
         # Initialize all other classes with the API key

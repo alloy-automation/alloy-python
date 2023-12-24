@@ -12,7 +12,7 @@ To use the Commerce API, you need to instantiate the Commerce class with a valid
 from alloy_python.uapi import UAPI
 
 api_key = "YOUR_API_KEY"
-accounting = Commerce(api_key)
+commerce = Commerce(api_key)
 ```
 
 ### Set the connectionId

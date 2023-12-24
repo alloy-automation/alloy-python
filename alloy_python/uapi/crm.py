@@ -3,6 +3,9 @@ from ..constants import BASE_URL
 
 class CRM:
     def __init__(self, api_key):
+        if not api_key:
+            raise ValueError("API key must be provided")
+        
         self.api_key = api_key
         self.headers = {
             'Authorization': f'Bearer {api_key}',
