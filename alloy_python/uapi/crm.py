@@ -26,7 +26,10 @@ class CRM:
             params=params,
             json=data,
         )
-        response.raise_for_status()
+        # response.raise_for_status()
+        if not response.ok:
+            print(f"Error: {response.status_code} - {response.reason}")
+            return
         return response.json()
 
     # Account-related methods

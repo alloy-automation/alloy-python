@@ -4,20 +4,23 @@ from urllib.parse import urlencode
 from ..constants import BASE_URL
 
 class Commerce:
-    def __init__(self, api_key, connectionId):
+    def __init__(self, api_key):
         if not api_key:
             raise ValueError("API key must be provided")
         self.url = BASE_URL
         self.api_key = api_key
         self.headers = {'Authorization': f'Bearer {api_key}'}
-        self.connection_id = connectionId
 
     def _api_request(self, method, endpoint, params=None, data=None):
         url = f'{self.url}/one/commerce/{endpoint}?connectionId={self.connection_id}'
         if params:
             url += f'&{urlencode(params)}'
         response = requests.request(method, url, headers=self.headers, json=data)
-        response.raise_for_status()
+        if not response.ok:
+            print(f"Error: {response.status_code} - {response.reason}")
+            return
+        
+        # response.raise_for_status()
         return response.json()
 
     def set_user_id(self, user_id):
