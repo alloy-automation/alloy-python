@@ -22,18 +22,19 @@ class CRM:
 
     def _api_request(self, method, endpoint, params=None, data=None):
         url = f'{self.base_url}/{endpoint}?connectionId={self.connection_id}'
-        response = requests.request(
-            method,
-            url,
-            headers=self.headers,
-            params=params,
-            json=data,
-        )
-        # response.raise_for_status()
-        if not response.ok:
-            print(f"Error: {response.status_code} - {response.reason}")
-            return
-        return response.json()
+        try:
+            response = requests.request(
+                method,
+                url,
+                headers=self.headers,
+                params=params,
+                json=data,
+            )
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
 
     # Account-related methods
     def list_accounts(self, filter=None):

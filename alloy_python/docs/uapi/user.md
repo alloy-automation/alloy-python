@@ -11,8 +11,8 @@ To use the User API, you need to instantiate the User class with a valid API key
 ```python
 from alloy_python.uapi import UAPI
 
-api_key = "YOUR_API_KEY"
-user = User(api_key)
+api_key = 'YOUR_API_KEY'
+uapi = UAPI(api_key)
 ```
 
 ### Methods
@@ -22,41 +22,41 @@ user = User(api_key)
 Retrieve a list of users.
 
 ```python
-users_data = user.list_users()
+users_data = uapi.User.list_users()
 ```
 
 ## Get User
 
-Retrieve information about a specific user.
+Retrieve information about a specific uapi.User.
 
 ```python
-user_data = user.get_user(user_id)
+user_data = uapi.User.get_user(user_id)
 ```
 
 ## Create User
 
-Create a new user.
+Create a new uapi.User.
 
 ```python
 user_data = {'username': 'john@example.com'}
-user_data = user.create_user(user_data)
+user_data = uapi.User.create_user(user_data)
 ```
 
 ## Update User
 
-Update information for a specific user.
+Update information for a specific uapi.User.
 
 ```python
 updated_user_data = {'username': 'jane@example.com'}
-updated_data = user.update_user(user_id, updated_user_data)
+updated_data = uapi.User.update_user(user_id, updated_user_data)
 ```
 
 ## Delete User
 
-Delete a specific user.
+Delete a specific uapi.User.
 
 ```python
-deleted_data = user.delete_user(user_id)
+deleted_data = uapi.User.delete_user(user_id)
 ```
 
 ## Error Handling
@@ -65,7 +65,7 @@ The User SDK provides error handling for API requests. If an error occurs, it pr
 
 ```python
 try:
-    response_data = user.list_users()
+    response_data = uapi.User.list_users()
 except ValueError as e:
     print(f"Error: {str(e)}")
 ```

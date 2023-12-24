@@ -10,18 +10,19 @@ class Commerce:
         self.url = BASE_URL
         self.api_key = api_key
         self.headers = {'Authorization': f'Bearer {api_key}'}
+        self.connection_id = None
 
     def _api_request(self, method, endpoint, params=None, data=None):
         url = f'{self.url}/one/commerce/{endpoint}?connectionId={self.connection_id}'
         if params:
             url += f'&{urlencode(params)}'
-        response = requests.request(method, url, headers=self.headers, json=data)
-        if not response.ok:
-            print(f"Error: {response.status_code} - {response.reason}")
-            return
-        
-        # response.raise_for_status()
-        return response.json()
+        try:
+            response = requests.request(method, url, headers=self.headers, json=data)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
 
     def set_user_id(self, user_id):
         self.user_id = user_id

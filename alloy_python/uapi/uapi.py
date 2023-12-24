@@ -14,6 +14,10 @@ class UAPI:
         self.Commerce = Commerce(api_key)
         self.CRM = CRM(api_key)
 
+    def connect(self, connection_id):
+        Commerce.connect(self, connection_id)
+        pass
+
     def identify(self, username):
         # Implementation for identifying a user
         pass

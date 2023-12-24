@@ -25,13 +25,13 @@ class Accounting:
         url = f'{self.url}/one/accounting/{endpoint}?connectionId={self.connection_id}'
         if params:
             url += f'&{urlencode(params)}'
-        response = requests.request(method, url, headers=self.headers, json=data)
-        if not response.ok:
-            print(f"Error: {response.status_code} - {response.reason}")
-            return
-        
-        # response.raise_for_status()
-        return response.json()
+        try:
+            response = requests.request(method, url, headers=self.headers, json=data)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
 
     def list_company_info(self, filter=None):
         params = filter if filter else {}

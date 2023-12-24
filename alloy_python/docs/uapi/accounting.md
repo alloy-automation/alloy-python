@@ -11,8 +11,8 @@ To use the Accounting API, you need to instantiate the `Accounting` class with y
 ```python
 from alloy_python.uapi import UAPI
 
-api_key = "YOUR_API_KEY"
-accounting = Accounting(api_key)
+api_key = 'YOUR_API_KEY'
+uapi = UAPI(api_key)
 ```
 
 ### Set the connectionId
@@ -20,7 +20,7 @@ accounting = Accounting(api_key)
 Set the connectionId using the `connect()` method.
 
 ```python
-accounting.connect("YOUR_CONNECTION_ID")
+uapi.Accounting.connect('YOUR_CONNECTION_ID')
 ```
 
 ## Methods
@@ -32,7 +32,7 @@ accounting.connect("YOUR_CONNECTION_ID")
 List company information with an optional filter.
 
 ```python
-company_info_data = accounting.list_company_info()
+company_info_data = uapi.Accounting.list_company_info()
 ```
 
 #### Get Company Info Count
@@ -40,7 +40,7 @@ company_info_data = accounting.list_company_info()
 Get the count of company information records.
 
 ```python
-company_info_count = accounting.get_company_info_count()
+company_info_count = uapi.Accounting.get_company_info_count()
 ```
 
 #### Get Company Info
@@ -48,7 +48,7 @@ company_info_count = accounting.get_company_info_count()
 Get detailed company information by ID with an optional filter.
 
 ```python
-detailed_company_info = accounting.get_company_info(companyId)
+detailed_company_info = uapi.Accounting.get_company_info(companyId)
 ```
 
 ### Accounts
@@ -59,7 +59,7 @@ Create an account with the provided data.
 
 ```python
 account_data = {"accountName": "SampleAccount", "accountType": "EXPENSE", "currency": "USD"}
-created_account = accounting.create_account(account_data)
+created_account = uapi.Accounting.create_account(account_data)
 ```
 
 #### List Accounts
@@ -67,7 +67,7 @@ created_account = accounting.create_account(account_data)
 List all accounts with an optional filter.
 
 ```python
-all_accounts = accounting.list_accounts()
+all_accounts = uapi.Accounting.list_accounts()
 ```
 
 #### Get Account Count
@@ -75,7 +75,7 @@ all_accounts = accounting.list_accounts()
 Get the count of accounts.
 
 ```python
-account_count = accounting.get_account_count()
+account_count = uapi.Accounting.get_account_count()
 ```
 
 #### Get Account
@@ -83,7 +83,7 @@ account_count = accounting.get_account_count()
 Get detailed account information by ID with an optional filter.
 
 ```python
-detailed_account_info = accounting.get_account(accountId)
+detailed_account_info = uapi.Accounting.get_account(accountId)
 ```
 
 #### Update Account
@@ -92,7 +92,7 @@ Update an account with the provided data.
 
 ```python
 update_data = {}
-updated_account = accounting.update_account(accountId, update_data)
+updated_account = uapi.Accounting.update_account(accountId, update_data)
 ```
 
 #### Delete Account
@@ -100,7 +100,7 @@ updated_account = accounting.update_account(accountId, update_data)
 Delete an account by ID.
 
 ```python
-accounting.delete_account(accountId)
+uapi.Accounting.delete_account(accountId)
 ```
 
 ### Customers
@@ -128,7 +128,7 @@ customer_data = {
     ],
     ...
 }
-created_customer = accounting.create_customer(customer_data)
+created_customer = uapi.Accounting.create_customer(customer_data)
 ```
 
 #### List Customers
@@ -136,7 +136,7 @@ created_customer = accounting.create_customer(customer_data)
 List all customers with an optional filter.
 
 ```python
-all_customers = accounting.list_customers()
+all_customers = uapi.Accounting.list_customers()
 ```
 
 #### Get Customer Count
@@ -144,7 +144,7 @@ all_customers = accounting.list_customers()
 Get the count of customers.
 
 ```python
-customer_count = accounting.get_customer_count()
+customer_count = uapi.Accounting.get_customer_count()
 ```
 
 #### Get Customer
@@ -152,7 +152,7 @@ customer_count = accounting.get_customer_count()
 Get detailed customer information by ID with an optional filter.
 
 ```python
-detailed_customer_info = accounting.get_customer(customerId)
+detailed_customer_info = uapi.Accounting.get_customer(customerId)
 ```
 
 #### Update Customer
@@ -161,7 +161,7 @@ Update a customer with the provided data.
 
 ```python
 update_customer_data = {}
-updated_customer = accounting.update_customer(customerId, update_customer_data)
+updated_customer = uapi.Accounting.update_customer(customerId, update_customer_data)
 ```
 
 #### Delete Customer
@@ -169,7 +169,7 @@ updated_customer = accounting.update_customer(customerId, update_customer_data)
 Delete a customer by ID.
 
 ```python
-accounting.delete_customer(customerId)
+uapi.Accounting.delete_customer(customerId)
 ```
 
 ### Vendors
@@ -197,7 +197,7 @@ vendor_data = {
         }
     ]
 }
-created_vendor = accounting.create_vendor(vendor_data)
+created_vendor = uapi.Accounting.create_vendor(vendor_data)
 ```
 
 #### List Vendors
@@ -205,7 +205,7 @@ created_vendor = accounting.create_vendor(vendor_data)
 List all vendors with an optional filter.
 
 ```python
-all_vendors = accounting.list_vendors()
+all_vendors = uapi.Accounting.list_vendors()
 ```
 
 #### Get Vendor Count
@@ -213,7 +213,7 @@ all_vendors = accounting.list_vendors()
 Get the count of vendors.
 
 ```python
-vendor_count = accounting.get_vendor_count()
+vendor_count = uapi.Accounting.get_vendor_count()
 ```
 
 #### Get Vendor
@@ -221,7 +221,7 @@ vendor_count = accounting.get_vendor_count()
 Get detailed vendor information by ID with an optional filter.
 
 ```python
-detailed_vendor_info = accounting.get_vendor(vendorId)
+detailed_vendor_info = uapi.Accounting.get_vendor(vendorId)
 ```
 
 #### Update Vendor
@@ -230,7 +230,7 @@ Update a vendor with the provided data.
 
 ```python
 update_vendor_data = {"vendorName": "UpdatedVendorName"}
-updated_vendor = accounting.update_vendor(vendorId, update_vendor_data)
+updated_vendor = uapi.Accounting.update_vendor(vendorId, update_vendor_data)
 ```
 
 #### Delete Vendor
@@ -238,7 +238,7 @@ updated_vendor = accounting.update_vendor(vendorId, update_vendor_data)
 Delete a vendor by ID.
 
 ```python
-accounting.delete_vendor(vendorId)
+uapi.Accounting.delete_vendor(vendorId)
 ```
 
 ### Tax Rates
@@ -248,7 +248,7 @@ accounting.delete_vendor(vendorId)
 List all tax rates with an optional filter.
 
 ```python
-all_tax_rates = accounting.list_tax_rates()
+all_tax_rates = uapi.Accounting.list_tax_rates()
 ```
 
 #### Get Tax Rate Count
@@ -256,7 +256,7 @@ all_tax_rates = accounting.list_tax_rates()
 Get the count of tax rates.
 
 ```python
-tax_rate_count = accounting.get_tax_rate_count()
+tax_rate_count = uapi.Accounting.get_tax_rate_count()
 ```
 
 #### Get Tax Rate
@@ -264,7 +264,7 @@ tax_rate_count = accounting.get_tax_rate_count()
 Get detailed tax rate information by ID with an optional filter.
 
 ```python
-detailed_tax_rate_info = accounting.get_tax_rate(taxRateId)
+detailed_tax_rate_info = uapi.Accounting.get_tax_rate(taxRateId)
 ```
 
 ### Tracking Categories
@@ -274,7 +274,7 @@ detailed_tax_rate_info = accounting.get_tax_rate(taxRateId)
 List all tracking categories with an optional filter.
 
 ```python
-all_tracking_categories = accounting.list_tracking_categories()
+all_tracking_categories = uapi.Accounting.list_tracking_categories()
 ```
 
 #### Get Tracking Category
@@ -282,7 +282,7 @@ all_tracking_categories = accounting.list_tracking_categories()
 Get detailed tracking category information by ID with an optional filter.
 
 ```python
-tracking_category_info = accounting.get_tracking_category(trackingCategoryId)
+tracking_category_info = uapi.Accounting.get_tracking_category(trackingCategoryId)
 ```
 
 #### Get Tracking Category Count
@@ -290,5 +290,5 @@ tracking_category_info = accounting.get_tracking_category(trackingCategoryId)
 Get the count of tracking categories.
 
 ```python
-tracking_category_count = accounting.get_tracking_category_count()
+tracking_category_count = uapi.Accounting.get_tracking_category_count()
 ```
