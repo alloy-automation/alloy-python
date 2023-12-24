@@ -14,7 +14,7 @@ if not api_key:
 
 # Initialize with the retrieved API key
 accounting = Accounting(api_key)
-accounting.connect("65878d9d61c4e7967cd99fa3")
+accounting.connect(connection_id)
 
 
 # Create Account
@@ -42,8 +42,8 @@ print(formatted_list_accounts)
 list_accounts_count_response = accounting.get_account_count()
 
 formatted_list_accounts_count = json.dumps(list_accounts_count_response, indent=4)
-assert formatted_list_accounts_count is not None, "Get accounts failed"
-print('[Accounting]: Get Accounts Count:')
+assert formatted_list_accounts_count is not None, "List accounts failed"
+print('[Accounting]: List Accounts Count:')
 print(formatted_list_accounts_count)
 
 

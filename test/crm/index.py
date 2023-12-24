@@ -13,7 +13,7 @@ if not api_key:
 
 # Initialize with the retrieved API key
 crm = CRM(api_key)
-crm.connect("6568af6d99ddb86864380ae0")
+crm.connect(connection_id)
 
 # List Accounts
 list_accounts_response = crm.list_accounts()

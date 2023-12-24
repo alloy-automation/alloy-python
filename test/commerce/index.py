@@ -15,7 +15,7 @@ if not api_key:
 
 # Initialize with the retrieved API key
 commerce = Commerce(api_key)
-commerce.connect("6581c0f747dceb15541ad411")
+commerce.connect(connection_id)
 
 
 # Create a Customer
