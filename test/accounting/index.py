@@ -14,7 +14,7 @@ if not api_key:
 
 # Initialize with the retrieved API key
 accounting = Accounting(api_key)
-accounting.connect(connection_id)
+accounting.connect("65878d9d61c4e7967cd99fa3")
 
 
 # Create Account
