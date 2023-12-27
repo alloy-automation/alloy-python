@@ -8,14 +8,14 @@ import random
 
 # Retrieve API key from environment variable
 api_key = os.environ.get('ALLOY_API_KEY')
-connection_id = os.environ.get('ALLOY_CONNECTION_ID')
+connection_id = os.environ.get('COMMERCE_CONNECTION_ID')
 
 if not api_key:
     raise EnvironmentError("API key not found. Set the ALLOY_API_KEY environment variable.")
 
 uapi = UAPI(api_key)
 # uapi.connect('6581c0f747dceb15541ad411')
-uapi.Commerce.connect('6581c0f747dceb15541ad411')
+uapi.Commerce.connect(connection_id)
 
 # Initialize with the retrieved API key
 # commerce = Commerce(api_key)
@@ -26,13 +26,13 @@ phone_number = ''.join(str(random.randint(0, 9)) for _ in range(10))
 create_customer_data = {
     "firstName": "Alloy",
     "lastName": "Test User",
-    "email": f'user+{uuid.uuid4()}@runalloy.com',
-    "phone": f'+1{phone_number}'
+    "email": f'user+{uuid.uuid4()}@runalloy.com'
 }
 create_customers_response = uapi.Commerce.create_customer(create_customer_data)
 
 formatted_create_customers = json.dumps(create_customers_response, indent=4)
 assert formatted_create_customers is not None, "Create customer failed"
+print(formatted_create_customers)
 
 # List all customers
 list_customers_response = uapi.Commerce.list_customers()

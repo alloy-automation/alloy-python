@@ -5,14 +5,14 @@ from alloy_python.uapi import UAPI
 
 # Retrieve API key from environment variable
 api_key = os.environ.get('ALLOY_API_KEY')
-connection_id = os.environ.get('ALLOY_CONNECTION_ID')
+connection_id = os.environ.get('CRM_CONNECTION_ID')
 
 if not api_key:
     raise EnvironmentError("API key not found. Set the ALLOY_API_KEY environment variable.")
 
 # Initialize with the retrieved API key
 uapi = UAPI(api_key)
-uapi.CRM.connect("6568af6d99ddb86864380ae0")
+uapi.CRM.connect(connection_id)
 
 # List Accounts
 list_accounts_response = uapi.CRM.list_accounts()

@@ -6,14 +6,14 @@ import uuid
 
 # Retrieve API key from environment variable
 api_key = os.environ.get('ALLOY_API_KEY')
-connection_id = os.environ.get('ALLOY_CONNECTION_ID')
+connection_id = os.environ.get('ACCOUNTING_CONNECTION_ID')
 
 if not api_key:
     raise EnvironmentError("API key not found. Set the ALLOY_API_KEY environment variable.")
 
 # Initialize with the retrieved API key
 uapi = UAPI(api_key)
-uapi.Accounting.connect("65878d9d61c4e7967cd99fa3")
+uapi.Accounting.connect(connection_id)
 
 
 # Create Account
