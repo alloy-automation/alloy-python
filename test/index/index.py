@@ -1,6 +1,7 @@
 import json
 import os
 from alloy_python.embedded import Embedded
+from alloy_python.uapi import UAPI
 
 # Retrieve API key from environment variable
 api_key = os.environ.get('ALLOY_API_KEY')
@@ -9,6 +10,7 @@ if not api_key:
 
 # Initialize with the retrieved API key
 embedded = Embedded(api_key)
+uapi = UAPI(api_key)
 
 # Use the App service
 response_data = embedded.App.get_apps()
