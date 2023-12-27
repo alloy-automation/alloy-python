@@ -14,8 +14,6 @@ if not api_key:
 
 # Initialize with the retrieved API key
 user = User(api_key)
-user.connect("6581c0f747dceb15541ad411")
-
 
 # Create a User
 create_user_data = {
@@ -27,9 +25,4 @@ formatted_create_user = json.dumps(create_user_response, indent=4)
 assert formatted_create_user is not None, "Create user failed"
 print(formatted_create_user)
 
-# List all customers
-# list_customers_response = commerce.list_customers()
 
-# formatted_list_customers = json.dumps(list_customers_response, indent=4)
-# assert formatted_list_customers is not None, "List customers failed"
-# print(formatted_list_customers)
