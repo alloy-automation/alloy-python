@@ -125,3 +125,20 @@ class Accounting:
     def get_tracking_category(self, tracking_category_id, filter=None):
         params = filter if filter else {}
         return self._api_request('GET', f'tracking-categories/{tracking_category_id}', params=params)
+    
+    def passthrough_request(self, method, endpoint, body=None, query=None, extra_headers=None):
+        passthrough_url = f"{self.url}/one/forward?connectionId={self.connection_id}"
+        payload = {
+            "method": method,
+            "endpoint": endpoint,
+            "body": body,
+            "query": query,
+            "extraHeaders": extra_headers
+        }
+        try:
+            response = requests.post(passthrough_url, headers=self.headers, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None

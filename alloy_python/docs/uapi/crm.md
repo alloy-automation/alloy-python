@@ -25,6 +25,22 @@ uapi.CRM.connect("YOUR_CONNECTION_ID")
 
 ## Methods
 
+### Passthrough Requests
+
+#### Passthrough Request Example
+
+Make a custom API request using the connection credentials with custom headers. If any value (query, headers, or body) is empty, set it to null (None).
+
+```python
+response = uapi.Accounting.passthrough_request(
+    method="GET",
+    endpoint="/path/to/custom/endpoint",
+    query={"param1": "value1"},
+    body={"json": "values"},
+    extraHeaders={"Custom-Header": "value"}
+)
+```
+
 ### Accounts
 
 #### List Accounts

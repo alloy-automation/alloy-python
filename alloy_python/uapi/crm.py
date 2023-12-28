@@ -168,3 +168,20 @@ class CRM:
 
     def delete_user(self, user_id):
         return self._api_request('DELETE', f'one/crm/users/{user_id}')
+
+    def passthrough_request(self, method, endpoint, body=None, query=None, extra_headers=None):
+        passthrough_url = f"{self.url}/one/forward?connectionId={self.connection_id}"
+        payload = {
+            "method": method,
+            "endpoint": endpoint,
+            "body": body,
+            "query": query,
+            "extraHeaders": extra_headers
+        }
+        try:
+            response = requests.post(passthrough_url, headers=self.headers, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
