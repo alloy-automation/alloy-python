@@ -39,4 +39,4 @@ try:
     response_data = uapi.Metadata.list_operations(app="shopify")
 except ValueError as e:
     print(f"Error: {str(e)}")
-    ```
+```
