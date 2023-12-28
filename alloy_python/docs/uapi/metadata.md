@@ -9,12 +9,12 @@ The Metadata SDK provides a client for interacting with metadata endpoints, enab
 
 To use the Metadata API, you need to instantiate the Metadata class with a valid API key.
 
-pythonCopy code
-
-`from alloy_python.uapi import UAPI
+```
+from alloy_python.uapi import UAPI
 
 api_key = 'YOUR_API_KEY'
-uapi = UAPI(api_key)` 
+uapi = UAPI(api_key)
+``` 
 
 ## Methods
 
