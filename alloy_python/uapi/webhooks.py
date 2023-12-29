@@ -1,3 +1,4 @@
+# alloy_python/uapi/webhooks.py
 import requests
 from ..constants import BASE_URL
 
@@ -14,26 +15,28 @@ class Webhooks:
         }
         self.url = f"{BASE_URL}/one/webhooks"
 
+    def _api_request(self, method, endpoint, data=None):
+        url = f"{self.url}/{endpoint}" if endpoint else self.url
+        try:
+            response = requests.request(method, url, headers=self.headers, json=data)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
+
     def create_subscription(self, topic, address):
         data = {
             'topic': topic,
             'address': address
         }
-        response = requests.post(self.url, headers=self.headers, json=data)
-        response.raise_for_status()
-        return response.json()
+        return self._api_request('POST', '', data)
 
     def list_subscriptions(self):
-        response = requests.get(self.url, headers=self.headers)
-        response.raise_for_status()
-        return response.json()
+        return self._api_request('GET', '')
 
     def get_subscription(self, subscription_id):
-        response = requests.get(f"{self.url}/{subscription_id}", headers=self.headers)
-        response.raise_for_status()
-        return response.json()
+        return self._api_request('GET', str(subscription_id))
 
     def delete_subscription(self, subscription_id):
-        response = requests.delete(f"{self.url}/{subscription_id}", headers=self.headers)
-        response.raise_for_status()
-        return response.json()
+        return self._api_request('DELETE', str(subscription_id))
