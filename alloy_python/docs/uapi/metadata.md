@@ -32,11 +32,11 @@ Retrieve a list of fields for a specified operation in an app.
 
 ## Error Handling
 
-The Metadata SDK provides error handling for API requests. If an error occurs, it prints an error message with status code and reason.
+The Metadata SDK provides error handling for API requests. If an error occurs, it returns a JSON with status code and error message.
 
 ```
-try:
-    response_data = uapi.Metadata.list_operations(app="shopify")
-except ValueError as e:
-    print(f"Error: {str(e)}")
+{
+    "error": "Invalid connectionId",
+    "status_code": 400
+}
 ```

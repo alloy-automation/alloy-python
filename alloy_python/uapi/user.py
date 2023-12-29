@@ -46,23 +46,12 @@ class User:
 
     def _api_request(self, method, url, params=None, data=None):
         headers = self.headers.copy()
-
         try:
-            if method == 'GET':
-                response = requests.get(url, headers=headers, params=params)
-            elif method == 'POST':
-                response = requests.post(url, headers=headers, json=data)
-            elif method == 'PUT':
-                response = requests.put(url, headers=headers, json=data)
-            elif method == 'DELETE':
-                response = requests.delete(url, headers=headers)
-
-            print(url)
-            # response.raise_for_status()
+            response = requests.request(method, url, headers=headers, params=params, json=data)
+            response.raise_for_status()
             return response.json()
-
-        except requests.exceptions.HTTPError as err:
-            if err.response.status_code == 422:
-                return err.response.json()
-            else:
-                raise ValueError(err.response.json().get('message'))
+        except requests.exceptions.HTTPError as http_err:
+            return {"error": http_err.response.json().get('message', 'An error occurred'), "status_code": http_err.response.status_code}
+        except requests.exceptions.RequestException as req_err:
+            print(f"Error: {req_err}")
+            return {"error": "Network or request error", "status_code": 500}

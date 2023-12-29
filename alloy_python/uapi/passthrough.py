@@ -23,11 +23,17 @@ class Passthrough:
             response = requests.request(method, url, headers=self.headers, json=payload)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-            return None
+        except requests.exceptions.HTTPError as http_err:
+            # Handles HTTP errors; returns error message and status code
+            error_message = http_err.response.json().get('message', 'An error occurred')
+            return {"error": error_message, "status_code": http_err.response.status_code}
+        except requests.exceptions.RequestException as req_err:
+            # Handles non-HTTP errors like network issues
+            print(f"Error: {req_err}")
+            return {"error": "Network or request error", "status_code": 500}
 
-    def passthrough_request(self, method, endpoint, body=None, query=None, extra_headers=None):
+
+    def request(self, method, endpoint, body=None, query=None, extra_headers=None):
         payload = {
             "method": method,
             "endpoint": endpoint,

@@ -21,9 +21,12 @@ class Webhooks:
             response = requests.request(method, url, headers=self.headers, json=data)
             response.raise_for_status()
             return response.json()
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-            return None
+        except requests.exceptions.HTTPError as http_err:
+            return {"error": http_err.response.json().get('message', 'An error occurred'), "status_code": http_err.response.status_code}
+        except requests.exceptions.RequestException as req_err:
+            print(f"Error: {req_err}")
+            return {"error": "Network or request error", "status_code": 500}
+
 
     def create_subscription(self, topic, address):
         data = {

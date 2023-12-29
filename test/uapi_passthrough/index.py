@@ -18,7 +18,7 @@ passthrough.connect(connection_id)
 # Example Passthrough Request (Shopify List Customers)
 method = "GET"
 endpoint = "/customers.json"
-response = passthrough.passthrough_request(method, endpoint)
+response = passthrough.request(method, endpoint)
 
 formatted_response = json.dumps(response, indent=4)
 print(formatted_response)
