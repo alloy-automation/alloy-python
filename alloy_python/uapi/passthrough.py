@@ -17,8 +17,17 @@ class Passthrough:
     def connect(self, connection_id):
         self.connection_id = connection_id
 
+    def _api_request(self, method, endpoint, payload):
+        url = f"{self.url}/{endpoint}?connectionId={self.connection_id}"
+        try:
+            response = requests.request(method, url, headers=self.headers, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            return None
+
     def passthrough_request(self, method, endpoint, body=None, query=None, extra_headers=None):
-        passthrough_url = f"{self.url}/one/forward?connectionId={self.connection_id}"
         payload = {
             "method": method,
             "endpoint": endpoint,
@@ -26,10 +35,4 @@ class Passthrough:
             "query": query or None,
             "extraHeaders": extra_headers or None
         }
-        try:
-            response = requests.post(passthrough_url, headers=self.headers, json=payload)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-            return None
+        return self._api_request('POST', 'one/forward', payload)
