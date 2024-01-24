@@ -127,3 +127,23 @@ class Accounting:
     def get_tracking_category(self, tracking_category_id, filter=None):
         params = filter if filter else {}
         return self._api_request('GET', f'tracking-categories/{tracking_category_id}', params=params)
+
+    def create_sales_order(self, data):
+        return self._api_request('POST', 'sales-orders', data=data)
+
+    def list_sales_orders(self, filter=None):
+        params = filter if filter else {}
+        return self._api_request('GET', 'sales-orders', params=params)
+
+    def get_sales_order_count(self):
+        return self._api_request('GET', 'sales-orders/count')
+
+    def get_sales_order(self, sales_order_id, filter=None):
+        params = filter if filter else {}
+        return self._api_request('GET', f'sales-orders/{sales_order_id}', params=params)
+
+    def update_sales_order(self, sales_order_id, data):
+        return self._api_request('PUT', f'sales-orders/{sales_order_id}', data=data)
+
+    def delete_sales_order(self, sales_order_id):
+        return self._api_request('DELETE', f'sales-orders/{sales_order_id}')    
