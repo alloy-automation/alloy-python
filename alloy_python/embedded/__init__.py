@@ -10,3 +10,4 @@ from .logs import Logs
 from .tokens import Tokens
 from .users import User
 from .workflows import Workflows
+from .headless import HeadlessInstallation

@@ -23,7 +23,13 @@ class Credentials:
         return response.json()
 
     def get_metadata(self):
-        response = requests.get(f'{self.url}/credentials?userId={self.user_id}',
+        response = requests.get(f'{self.url}/metadata/credentials',
+                                headers=self.headers)
+        response.raise_for_status()
+        return response.json()
+
+    def get_metadata_by_app(self, app):
+        response = requests.get(f'{self.url}/metadata/credentials/{app}',
                                 headers=self.headers)
         response.raise_for_status()
         return response.json()
@@ -35,13 +41,14 @@ class Credentials:
         return response.json()
 
     def create(self, data):
-        response = requests.post(f'{self.url}/users/{self.user_id}/credentials',
+        data['userId'] = self.user_id
+        response = requests.post(f'{self.url}/headless/credentials',
                                  headers=self.headers, json=data)
         response.raise_for_status()
         return response.json()
 
-    def generate_oauth_link(self, app, integration_id):
-        response = requests.get(f'{self.url}/users/{self.user_id}/credentials/{app}?integrationId={integration_id}',
+    def generate_oauth_link(self, app):
+        response = requests.get(f'{self.url}/headless/oauthUrl?userId={self.user_id}&app={app}',
                                 headers=self.headers)
         response.raise_for_status()
         return response.json()

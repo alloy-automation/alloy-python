@@ -1,6 +1,6 @@
 # constants.py
 
-BASE_URL = "https://embedded.runalloy.com/2023-12"
+BASE_URL = "https://embedded.runalloy.com/2024-03"
 CONNECTION_ID = ""
 API_KEY = ""
 COMMERCE_CONNECTION_ID = ""
