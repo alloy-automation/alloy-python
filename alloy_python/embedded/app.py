@@ -8,7 +8,7 @@ class App:
         self.url = BASE_URL
 
     def get_apps(self):
-        response = requests.get(f'{self.url}/apps', headers=self.headers)
+        response = requests.get(f'{self.url}/metadata/apps', headers=self.headers)
         response.raise_for_status()  # Raise an exception for HTTP error responses
         return response.json()
 
